@@ -21,14 +21,15 @@ public class LogicaPoliza {
 	
 	public List<Poliza> polizasVigentesPorCliente(String cedulaCliente) throws BusinessLogicException{
 		List<Poliza> polizasCliente=null;
-		LogicaCliente clienteLogico=new LogicaCliente();
-		Cliente usuario=clienteLogico.consultarCliente(cedulaCliente);
-		if(usuario==null){
-			throw new BusinessLogicException("El usuario buscado no existe.");
-		}
-		polizasCliente=polizaDao.consultarPolizasVigentesPorCliente(usuario.getCedula());
-		if(polizasCliente==null || polizasCliente.isEmpty()){
-			throw new BusinessLogicException("El usuario no tiene polizas vigentes a la fecha");
+		try{
+			LogicaCliente clienteLogico=new LogicaCliente();
+			Cliente usuario=clienteLogico.consultarCliente(cedulaCliente);
+			polizasCliente=polizaDao.consultarPolizasVigentesPorCliente(usuario.getCedula());
+			if(polizasCliente==null || polizasCliente.isEmpty()){
+				throw new BusinessLogicException("El usuario no tiene polizas vigentes a la fecha");
+			}
+		}catch(BusinessLogicException e){
+			throw new BusinessLogicException(e,"El usuario buscado no existe.");
 		}
 		return polizasCliente;
  	}
