@@ -3,7 +3,10 @@
  */
 package co.edu.udea.appempresariales.ensuranceappjersey.entities;
 
+import java.io.Serializable;
 import java.util.Date;
+
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * @author JuanF
@@ -13,8 +16,14 @@ import java.util.Date;
  * @author JuanF
  *
  */
-public class Cliente {
+
+@XmlRootElement
+public class Cliente implements Serializable{
 	
+	/**
+	 * Serial Version
+	 */
+	private static final long serialVersionUID = 4421877963920736525L;
 	/**
 	 * Nombres del cliente
 	 */

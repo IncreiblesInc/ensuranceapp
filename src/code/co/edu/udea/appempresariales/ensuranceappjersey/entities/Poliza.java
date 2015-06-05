@@ -1,8 +1,16 @@
 package co.edu.udea.appempresariales.ensuranceappjersey.entities;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Poliza {
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
+public class Poliza implements Serializable {
+	/**
+	 * Serial Version
+	 */
+	private static final long serialVersionUID = 9039655406700583779L;
 	/**
 	 * Es el número de la póliza
 	 */
