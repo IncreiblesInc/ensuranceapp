@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  *
  */
 
-@XmlRootElement
+@XmlRootElement(name="cliente")
 public class Cliente implements Serializable{
 	
 	/**

@@ -4,7 +4,9 @@
 package co.edu.udea.appempresariales.ensuranceappjersey.dao.implementacion;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.List;
 
@@ -47,12 +49,16 @@ public class PolizaDAOImpl implements PolizaDAO {
 	}
 	
 	public List<Poliza> obtenerPolizasTemporal(){
+		
+		  Calendar date = new GregorianCalendar(2016, 3, 7);
+		    date.add(Calendar.DAY_OF_MONTH, -7);
+		    Date vigencia=date.getTime();
 		List<Poliza> Polizas = new ArrayList<Poliza>();
-		Poliza p1 = new Poliza("123", "Vida", new Date() , new Date(), 10000000, "123");
-		Poliza p2 = new Poliza("124", "Autos", new Date() , new Date(), 100000000, "123");
-		Poliza p3 = new Poliza("121", "Salud", new Date() , new Date(), 133000000, "122");
-		Poliza p4 = new Poliza("125", "Empresarial", new Date() , new Date(), 123400000, "111");
-		Poliza p5 = new Poliza("127", "Multiriesgo", new Date() , new Date(), 1234000023, "111");
+		Poliza p1 = new Poliza("123", "Vida", new Date() , vigencia, 10000000, "123");
+		Poliza p2 = new Poliza("124", "Autos", new Date() , vigencia, 100000000, "123");
+		Poliza p3 = new Poliza("121", "Salud", new Date() , vigencia, 133000000, "122");
+		Poliza p4 = new Poliza("125", "Empresarial", new Date() , vigencia, 123400000, "111");
+		Poliza p5 = new Poliza("127", "Multiriesgo", new Date() , vigencia, 1234000023, "111");
 		Polizas.add(p1);
 		Polizas.add(p2);
 		Polizas.add(p3);

@@ -19,18 +19,15 @@ public class LogicaPoliza {
 		polizaDao=instance.getPolizaDAO();
 	}
 	
-	public List<Poliza> polizasVigentesPorCliente(String cedulaCliente) throws BusinessLogicException{
+	public List<Poliza> obtenerPolizasVigentesPorCliente(String cedulaCliente) throws BusinessLogicException{
 		List<Poliza> polizasCliente=null;
-		try{
 			LogicaCliente clienteLogico=new LogicaCliente();
 			Cliente usuario=clienteLogico.consultarCliente(cedulaCliente);
 			polizasCliente=polizaDao.consultarPolizasVigentesPorCliente(usuario.getCedula());
 			if(polizasCliente==null || polizasCliente.isEmpty()){
 				throw new BusinessLogicException("El usuario no tiene polizas vigentes a la fecha");
 			}
-		}catch(BusinessLogicException e){
-			throw new BusinessLogicException(e,"El usuario buscado no existe.");
-		}
+
 		return polizasCliente;
  	}
 	

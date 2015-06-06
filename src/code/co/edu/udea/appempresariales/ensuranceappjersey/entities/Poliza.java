@@ -5,7 +5,7 @@ import java.util.Date;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement
+@XmlRootElement(name="poliza")
 public class Poliza implements Serializable {
 	/**
 	 * Serial Version
