@@ -13,6 +13,9 @@ import javax.ws.rs.core.MediaType;
 
 
 
+
+import com.google.gson.Gson;
+
 import co.edu.udea.appempresariales.ensuranceappjersey.entities.Cliente;
 import co.edu.udea.appempresariales.ensuranceappjersey.entities.Poliza;
 import co.edu.udea.appempresariales.ensuranceappjersey.exception.BusinessLogicException;
@@ -25,18 +28,18 @@ public class ClienteWS {
 	
 	LogicaCliente clienteLogico = new LogicaCliente();
 	LogicaPoliza polizaLogica = new LogicaPoliza();
-	
+	Gson gson = new Gson();
 	
 	@GET
 	@Produces("application/json")	
 	@Path("/getcliente")
-	public Cliente getCliente(@QueryParam("cedula") String cedula) throws BusinessLogicException{
+	public String getCliente(@QueryParam("cedula") String cedula) throws BusinessLogicException{
 		if (cedula==null || cedula.trim().equals("")) {
 			throw new BusinessLogicException("Debe enviar una cédula");
 		}
 		try{
 			Cliente cliente = clienteLogico.consultarCliente(cedula);
-			return(cliente);
+			return(gson.toJson(cliente));
 		}catch(BusinessLogicException e){
 			throw new BusinessLogicException(e,"El usuario buscado no existe.");
 			
@@ -46,13 +49,13 @@ public class ClienteWS {
 	@GET
 	@Path("/polizasvigentes")
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Poliza> obtenerPolizasVigentesPorCLiente(@QueryParam("cedula")String cedula)throws BusinessLogicException{
+	public String obtenerPolizasVigentesPorCLiente(@QueryParam("cedula")String cedula)throws BusinessLogicException{
 		if (cedula==null || cedula.trim().equals("")) {
 			throw new BusinessLogicException("Debe enviar una cédula");
 		}
 		
 		List<Poliza> polizasVigentes= polizaLogica.obtenerPolizasVigentesPorCliente(cedula);
-		return polizasVigentes;	
+		return gson.toJson(polizasVigentes);	
 	}
 
 	
