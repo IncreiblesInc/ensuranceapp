@@ -31,8 +31,8 @@ public class ClienteWS {
 	@Produces("application/json")	
 	@Path("/getcliente")
 	public Cliente getCliente(@QueryParam("cedula") String cedula) throws BusinessLogicException{
-		if (cedula==null || cedula.trim().endsWith("")) {
-			throw new BusinessLogicException("Debe enviar una cédula");
+		if (cedula==null || cedula.trim().equals("")) {
+			throw new BusinessLogicException("Debe enviar una cÃ©dula");
 		}
 		try{
 			Cliente cliente = clienteLogico.consultarCliente(cedula);
@@ -48,7 +48,7 @@ public class ClienteWS {
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Poliza> obtenerPolizasVigentesPorCLiente(@QueryParam("cedula")String cedula)throws BusinessLogicException{
 		if (cedula==null || cedula.trim().equals("")) {
-			throw new BusinessLogicException("Debe enviar una cédula");
+			throw new BusinessLogicException("Debe enviar una cÃ©dula");
 		}
 		
 		List<Poliza> polizasVigentes= polizaLogica.obtenerPolizasVigentesPorCliente(cedula);
