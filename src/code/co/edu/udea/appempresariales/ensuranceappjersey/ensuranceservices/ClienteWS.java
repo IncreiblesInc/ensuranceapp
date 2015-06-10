@@ -7,9 +7,11 @@ import java.util.List;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
+
 
 
 
@@ -32,8 +34,8 @@ public class ClienteWS {
 	
 	@GET
 	@Produces("application/json")	
-	@Path("/getcliente")
-	public String getCliente(@QueryParam("cedula") String cedula) throws BusinessLogicException{
+	@Path("{cedula}")
+	public String getCliente(@PathParam("cedula") String cedula) throws BusinessLogicException{
 		if (cedula==null || cedula.trim().equals("")) {
 			throw new BusinessLogicException("Debe enviar una cédula");
 		}
@@ -46,18 +48,6 @@ public class ClienteWS {
 		}
 			
 	}
-	@GET
-	@Path("/polizasvigentes")
-	@Produces(MediaType.APPLICATION_JSON)
-	public String obtenerPolizasVigentesPorCLiente(@QueryParam("cedula")String cedula)throws BusinessLogicException{
-		if (cedula==null || cedula.trim().equals("")) {
-			throw new BusinessLogicException("Debe enviar una cédula");
-		}
-		
-		List<Poliza> polizasVigentes= polizaLogica.obtenerPolizasVigentesPorCliente(cedula);
-		return gson.toJson(polizasVigentes);	
-	}
-
 	
 
 }
