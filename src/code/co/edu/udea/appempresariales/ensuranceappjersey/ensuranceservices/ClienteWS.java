@@ -2,51 +2,56 @@ package co.edu.udea.appempresariales.ensuranceappjersey.ensuranceservices;
 
 
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
-
-
-
-
-
-import com.google.gson.Gson;
 
 import co.edu.udea.appempresariales.ensuranceappjersey.entities.Cliente;
 import co.edu.udea.appempresariales.ensuranceappjersey.entities.Poliza;
 import co.edu.udea.appempresariales.ensuranceappjersey.exception.BusinessLogicException;
-import co.edu.udea.appempresariales.ensuranceappjersey.exception.TechnicalException;
 import co.edu.udea.appempresariales.ensuranceappjersey.negocio.LogicaCliente;
 import co.edu.udea.appempresariales.ensuranceappjersey.negocio.LogicaPoliza;
 
-@Path("/cliente")
+import com.owlike.genson.Genson;
+
+@Path("/clientes")
 public class ClienteWS {
 	
 	LogicaCliente clienteLogico = new LogicaCliente();
 	LogicaPoliza polizaLogica = new LogicaPoliza();
-	Gson gson = new Gson();
-	
+	Genson gson = new Genson();
 	@GET
 	@Produces("application/json")	
-	@Path("{cedula}")
+	@Path("/{cedula}")
 	public String getCliente(@PathParam("cedula") String cedula) throws BusinessLogicException{
 		if (cedula==null || cedula.trim().equals("")) {
 			throw new BusinessLogicException("Debe enviar una cédula");
 		}
+				
 		try{
 			Cliente cliente = clienteLogico.consultarCliente(cedula);
-			return(gson.toJson(cliente));
+			return(gson.serialize(cliente));
 		}catch(BusinessLogicException e){
 			throw new BusinessLogicException(e,"El usuario buscado no existe.");
 			
 		}
 			
+	}
+	
+	@GET
+	@Path("{cedula}/polizas")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String obtenerPolizasVigentesPorCLiente(@PathParam("cedula")String cedula)throws BusinessLogicException{
+		if (cedula==null || cedula.trim().equals("")) {
+			throw new BusinessLogicException("Debe enviar una cédula");
+		}
+		
+		List<Poliza> polizasVigentes= polizaLogica.obtenerPolizasVigentesPorCliente(cedula);
+		return (gson.serialize(polizasVigentes));	
 	}
 	
 
