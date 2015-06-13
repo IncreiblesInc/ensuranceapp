@@ -2,8 +2,10 @@ package co.edu.udea.appempresariales.ensuranceappjersey.dao;
 
 import co.edu.udea.appempresariales.ensuranceappjersey.dao.implementacion.ClienteDAOImpl;
 import co.edu.udea.appempresariales.ensuranceappjersey.dao.implementacion.PolizaDAOImpl;
+import co.edu.udea.appempresariales.ensuranceappjersey.dao.implementacion.ReclamacionDAOImpl;
 import co.edu.udea.appempresariales.ensuranceappjersey.dao.interfaces.ClienteDAO;
 import co.edu.udea.appempresariales.ensuranceappjersey.dao.interfaces.PolizaDAO;
+import co.edu.udea.appempresariales.ensuranceappjersey.dao.interfaces.ReclamacionDAO;
 
 /**
  * Clase encargada de retornar los DAOs Correspondientes a cada clase.
@@ -53,6 +55,13 @@ public class DAOFactory {
 	 */
 	public PolizaDAO getPolizaDAO(){
 		return new PolizaDAOImpl();
+	}
+
+	/**
+	 * @return Se obtiene la instancia de la implementación de la reclamación.
+	 */
+	public ReclamacionDAO getReclamacionDAO(){
+		return new ReclamacionDAOImpl();
 	}
 
 }
