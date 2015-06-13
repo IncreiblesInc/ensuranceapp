@@ -42,17 +42,5 @@ public class ClienteWS {
 			
 	}
 	
-	@GET
-	@Path("{cedula}/polizas")
-	@Produces(MediaType.APPLICATION_JSON)
-	public String obtenerPolizasVigentesPorCLiente(@PathParam("cedula")String cedula)throws BusinessLogicException{
-		if (cedula==null || cedula.trim().equals("")) {
-			throw new BusinessLogicException("Debe enviar una cédula");
-		}
-		
-		List<Poliza> polizasVigentes= polizaLogica.obtenerPolizasVigentesPorCliente(cedula);
-		return (gson.serialize(polizasVigentes));	
-	}
-	
 
 }

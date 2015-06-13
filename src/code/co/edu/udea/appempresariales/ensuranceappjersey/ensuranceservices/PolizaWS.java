@@ -20,6 +20,16 @@ public class PolizaWS {
 	
 	LogicaPoliza polizaLogica = new LogicaPoliza();
 	Genson gson = new Genson();
-	
+	@GET
+	@Path("/cliente/{cedula}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String obtenerPolizasVigentesPorCLiente(@PathParam("cedula")String cedula)throws BusinessLogicException{
+		if (cedula==null || cedula.trim().equals("")) {
+			throw new BusinessLogicException("Debe enviar una cédula");
+		}
+		
+		List<Poliza> polizasVigentes= polizaLogica.obtenerPolizasVigentesPorCliente(cedula);
+		return (gson.serialize(polizasVigentes));	
+	}
 
 }
