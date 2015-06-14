@@ -15,27 +15,28 @@ public class Oficina implements Serializable {
 	 * Serial ID
 	 */
 	private static final long serialVersionUID = 5082967601800483919L;
-	
+
 	/**
 	 * Ciudad donde se encuentra la oficina.
 	 */
 	private String ciudadOficina;
-	
+
 	/**
 	 * Nombre de la oficina
 	 */
-	
+
 	private String nombreOficina;
-	
+
 	/**
 	 * Identificador único de la oficina.
 	 */
-	
+
 	private String cdOficina;
 
 	/**
 	 * 
 	 * Constructor
+	 * 
 	 * @param ciudad
 	 * @param nombreOficina
 	 * @param cdOficina
@@ -47,6 +48,10 @@ public class Oficina implements Serializable {
 		this.cdOficina = cdOficina;
 	}
 
+	public Oficina() {
+		super();
+	}
+
 	/**
 	 * @return the ciudad
 	 */
@@ -55,7 +60,8 @@ public class Oficina implements Serializable {
 	}
 
 	/**
-	 * @param ciudad the ciudad to set
+	 * @param ciudad
+	 *            the ciudad to set
 	 */
 	public void setCiudad(String ciudad) {
 		this.ciudadOficina = ciudad;
@@ -69,7 +75,8 @@ public class Oficina implements Serializable {
 	}
 
 	/**
-	 * @param nombreOficina the nombreOficina to set
+	 * @param nombreOficina
+	 *            the nombreOficina to set
 	 */
 	public void setNombreOficina(String nombreOficina) {
 		this.nombreOficina = nombreOficina;
@@ -83,13 +90,11 @@ public class Oficina implements Serializable {
 	}
 
 	/**
-	 * @param cdOficina the cdOficina to set
+	 * @param cdOficina
+	 *            the cdOficina to set
 	 */
 	public void setCdOficina(String cdOficina) {
 		this.cdOficina = cdOficina;
 	}
-	
-	
-	
-	
+
 }

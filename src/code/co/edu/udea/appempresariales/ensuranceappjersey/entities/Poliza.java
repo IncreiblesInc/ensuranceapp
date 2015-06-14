@@ -82,6 +82,10 @@ public class Poliza implements Serializable {
 		this.asesor = asesor;
 	}
 	
+	public Poliza() {
+		super();
+	}
+	
 	
 	
 	/**

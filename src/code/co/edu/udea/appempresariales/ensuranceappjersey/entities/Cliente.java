@@ -68,6 +68,13 @@ public class Cliente implements Serializable{
 		this.ciudad = ciudad;
 		this.departamento = departamento;
 	}
+	
+	
+	public Cliente() {
+		super();
+	}
+
+
 	/**
 	 * @return the nombres
 	 */

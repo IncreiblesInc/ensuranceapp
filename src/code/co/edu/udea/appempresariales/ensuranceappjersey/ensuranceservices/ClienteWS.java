@@ -2,16 +2,13 @@ package co.edu.udea.appempresariales.ensuranceappjersey.ensuranceservices;
 
 
 
-import java.util.List;
-
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import co.edu.udea.appempresariales.ensuranceappjersey.entities.Cliente;
-import co.edu.udea.appempresariales.ensuranceappjersey.entities.Poliza;
 import co.edu.udea.appempresariales.ensuranceappjersey.exception.BusinessLogicException;
 import co.edu.udea.appempresariales.ensuranceappjersey.negocio.LogicaCliente;
 import co.edu.udea.appempresariales.ensuranceappjersey.negocio.LogicaPoliza;
@@ -27,16 +24,16 @@ public class ClienteWS {
 	@GET
 	@Produces("application/json")	
 	@Path("/{cedula}")
-	public String getCliente(@PathParam("cedula") String cedula) throws BusinessLogicException{
+	public Response getCliente(@PathParam("cedula") String cedula){
 		if (cedula==null || cedula.trim().equals("")) {
-			throw new BusinessLogicException("Debe enviar una cédula");
+			Response.status(Response.Status.BAD_REQUEST).build();
 		}
 				
 		try{
 			Cliente cliente = clienteLogico.consultarCliente(cedula);
-			return(gson.serialize(cliente));
+			return(Response.ok(gson.serialize(cliente)).build());
 		}catch(BusinessLogicException e){
-			throw new BusinessLogicException(e,"El usuario buscado no existe.");
+			return Response.status(Response.Status.NOT_FOUND).build();
 			
 		}
 			

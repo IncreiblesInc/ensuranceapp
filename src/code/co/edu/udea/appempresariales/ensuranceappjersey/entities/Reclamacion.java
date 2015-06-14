@@ -75,6 +75,10 @@ public class Reclamacion implements Serializable {
 		this.fechaActualizacion = fechaActualizacion;
 		this.numeroPoliza = numeroPoliza;
 	}
+	
+	public Reclamacion() {
+		super();
+	}
 
 	/**
 	 * @return the cdReclamacion

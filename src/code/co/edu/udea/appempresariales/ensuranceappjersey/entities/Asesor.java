@@ -69,6 +69,14 @@ public class Asesor implements Serializable {
 		this.celularAsesor = celularAsesor;
 		this.cdAsesor = cdAsesor;
 	}
+	
+	
+
+	public Asesor() {
+		super();
+	}
+
+
 
 	/**
 	 * @return the nombreAsesor
