@@ -52,7 +52,7 @@ public class ClienteWSTest {
 		Invocation invocation= target.request(MediaType.APPLICATION_JSON)
 				.buildGet();
 		Response respuesta= invocation.invoke();
-		assertEquals(respuesta.getStatus(),400);
+		assertEquals(respuesta.getStatus(),404);
 	}
 
 }
