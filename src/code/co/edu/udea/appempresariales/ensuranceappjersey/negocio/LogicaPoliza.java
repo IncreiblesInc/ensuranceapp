@@ -46,6 +46,22 @@ public class LogicaPoliza {
 		}
 		return polizasCliente;
 	}
+
+	public Poliza obtenerDetallePoliza(String poliza) throws BusinessLogicException {
+		if (poliza==null ||poliza.trim().equals("")) {
+			throw new BusinessLogicException("La poliza no puede estar vacía");
+		}
+		Poliza polizaDetallada =polizaDao.consultarPoliza(poliza);
+		try {
+			polizaDetallada.setReclamaciones(logicaReclamacion.obtenerReclamacionesDeUnaPoliza(poliza));
+		} catch (Exception e) {
+			/**capto la excepcion, mas no la lanzo ya que no afecta la operacion el hecho
+		     **de que una poliza no tenga reclamaciones
+		    */
+		}
+		
+		return polizaDetallada;
+	}
 	
 	
 }
