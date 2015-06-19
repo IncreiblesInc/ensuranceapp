@@ -12,6 +12,7 @@ public class LogicaPoliza {
 
 	DAOFactory instance;
 	PolizaDAO polizaDao;
+	LogicaReclamacion logicaReclamacion;
 
 	public LogicaPoliza() {
 		super();
@@ -30,6 +31,21 @@ public class LogicaPoliza {
 
 		return polizasCliente;
  	}
+	
+	public List<Poliza> obtenerPolizasVigentePorClienteMasReclamaciones(String cedulaCliente) throws BusinessLogicException{
+		List<Poliza> polizasCliente=null;
+		polizasCliente= obtenerPolizasVigentesPorCliente(cedulaCliente);
+		for (Poliza poliza : polizasCliente) {
+			try{
+			poliza.setReclamaciones(logicaReclamacion.obtenerReclamacionesDeUnaPoliza(poliza.getNumeroPoliza()));
+			}catch(BusinessLogicException e){
+				/**capto la excepcion, mas no la lanzo ya que no afecta la operacion el hecho
+			     **de que una poliza no tenga reclamaciones
+			    */
+			}
+		}
+		return polizasCliente;
+	}
 	
 	
 }

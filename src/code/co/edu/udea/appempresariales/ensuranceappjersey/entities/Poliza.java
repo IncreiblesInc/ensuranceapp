@@ -2,6 +2,7 @@ package co.edu.udea.appempresariales.ensuranceappjersey.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -53,7 +54,11 @@ public class Poliza implements Serializable {
 	 * Asesor de la pÃ³liza
 	 */
 	private Asesor asesor;
-
+	
+	/**
+	 * Lista de reclamaciones de una póliza
+	 */
+	private List<Reclamacion> reclamaciones;
 	
 
 	/**
@@ -216,6 +221,14 @@ public class Poliza implements Serializable {
 	 */
 	public void setOficina(Oficina oficina) {
 		this.oficina = oficina;
+	}
+
+	public List<Reclamacion> getReclamaciones() {
+		return reclamaciones;
+	}
+
+	public void setReclamaciones(List<Reclamacion> reclamaciones) {
+		this.reclamaciones = reclamaciones;
 	}
 	
 	
