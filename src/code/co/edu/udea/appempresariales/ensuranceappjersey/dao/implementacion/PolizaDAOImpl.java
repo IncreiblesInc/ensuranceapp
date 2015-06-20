@@ -56,7 +56,7 @@ public class PolizaDAOImpl implements PolizaDAO {
 		    date.add(Calendar.DAY_OF_MONTH, -7);
 		    Date vigencia=date.getTime();
 		    Oficina o = new Oficina("Medellin", "Carabobo", "Medellin");
-		   Asesor a = new Asesor("Juan Fernando", "", "373873873", "juanfer@asesor.com", "104848933","Medellin");
+		   Asesor a = new Asesor("Juan Fernando", "373873873.jpg", "373873873", "juanfer@asesor.com", "104848933","Medellin");
 		    
 		List<Poliza> Polizas = new ArrayList<Poliza>();
 		Poliza p1 = new Poliza("123", "Vida", new Date() , vigencia, 10000000, "123", new Date() , o,a);

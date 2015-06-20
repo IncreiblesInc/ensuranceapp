@@ -55,7 +55,7 @@ public class Oficina implements Serializable {
 	/**
 	 * @return the ciudad
 	 */
-	public String getCiudad() {
+	public String getCiudadOficina() {
 		return ciudadOficina;
 	}
 
@@ -63,7 +63,7 @@ public class Oficina implements Serializable {
 	 * @param ciudad
 	 *            the ciudad to set
 	 */
-	public void setCiudad(String ciudad) {
+	public void setCiudadOficina(String ciudad) {
 		this.ciudadOficina = ciudad;
 	}
 

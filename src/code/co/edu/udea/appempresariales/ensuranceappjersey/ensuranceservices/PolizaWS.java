@@ -56,5 +56,26 @@ public class PolizaWS {
 		}
 		return (Response.ok(gson.serialize(polizaDetallada)).build());
 	}
+	
+	@GET
+	@Produces("application/json")
+	@Path("/cliente/{cedula}/reclamaciones")
+	public Response reclamacionesCliente(@PathParam("cedula") String cedula) {
+		List<Poliza> listareclamaciones;
+		if (cedula == null || cedula.trim().equals("")) {
+			Response.status(Response.Status.BAD_REQUEST).build();
+		}
+
+		try {
+			listareclamaciones = polizaLogica
+					.obtenerPolizasVigentePorClienteMasReclamaciones(cedula);
+			return (Response.ok(gson.serialize(listareclamaciones)).build());
+		} catch (BusinessLogicException e) {
+			return Response.status(Response.Status.NOT_FOUND).build();
+
+		}
+	}
+	
+	
 
 }

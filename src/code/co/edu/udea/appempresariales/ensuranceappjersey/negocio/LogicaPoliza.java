@@ -18,6 +18,7 @@ public class LogicaPoliza {
 		super();
 		this.instance = DAOFactory.getInstance();
 		polizaDao=instance.getPolizaDAO();
+		logicaReclamacion= new LogicaReclamacion();
 	}
 	
 	public List<Poliza> obtenerPolizasVigentesPorCliente(String cedulaCliente) throws BusinessLogicException{
