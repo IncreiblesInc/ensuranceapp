@@ -33,11 +33,12 @@ public class PolizaWS {
 		List<Poliza> polizasVigentes=new ArrayList<Poliza>();
 		try {
 			polizasVigentes = polizaLogica.obtenerPolizasVigentesPorCliente(cedula);
+			return (Response.ok(gson.serialize(polizasVigentes)).build());
 			
 		} catch (BusinessLogicException e) {
-			Response.status(Response.Status.NOT_FOUND);
+			return Response.status(Response.Status.NOT_FOUND).build();
 		}
-		return (Response.ok(gson.serialize(polizasVigentes)).build());
+		
 	}
 	
 	
