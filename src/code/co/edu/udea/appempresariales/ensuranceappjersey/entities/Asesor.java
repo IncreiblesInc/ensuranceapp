@@ -46,7 +46,7 @@ public class Asesor implements Serializable {
 	/**
 	 * Codigo de celular del asesor
 	 */
-	private String cdAsesor;
+	private String codigoAsesor;
 	
 	
 
@@ -67,7 +67,7 @@ public class Asesor implements Serializable {
 		this.telefonoAsesor = telefonoAsesor;
 		this.correoAsesor = correoAsesor;
 		this.celularAsesor = celularAsesor;
-		this.cdAsesor = cdAsesor;
+		this.codigoAsesor = cdAsesor;
 	}
 	
 	
@@ -151,15 +151,15 @@ public class Asesor implements Serializable {
 	/**
 	 * @return the cdAsesor
 	 */
-	public String getCdAsesor() {
-		return cdAsesor;
+	public String getCodigoAsesor() {
+		return codigoAsesor;
 	}
 
 	/**
 	 * @param cdAsesor the cdAsesor to set
 	 */
-	public void setCdAsesor(String cdAsesor) {
-		this.cdAsesor = cdAsesor;
+	public void setCodigoAsesor(String cdAsesor) {
+		this.codigoAsesor = cdAsesor;
 	}
 	
 	

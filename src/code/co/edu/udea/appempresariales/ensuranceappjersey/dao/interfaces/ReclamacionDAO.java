@@ -26,4 +26,11 @@ public interface ReclamacionDAO {
 	 * @return Lista de reclamaciones existentes en la base de datos.
 	 */
 	public List<Reclamacion> obtenerReclamacionesTemporal();
+	
+	
+	/**
+	 * Metodo que guarda una reclamacion
+	 * @param reclamacion
+	 */
+	public void guardarReclamacion(Reclamacion reclamacion);
 }

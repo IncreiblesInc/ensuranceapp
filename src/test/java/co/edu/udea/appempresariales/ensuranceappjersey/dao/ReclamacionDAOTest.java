@@ -58,8 +58,8 @@ public class ReclamacionDAOTest {
 	@Test
 	public void DeberiaRetornarReclamacionesDadaUnaPoliza(){
 		reclamacionDAO = new ReclamacionDAOImpl();
-		ArrayList<Reclamacion> reclamaciones = (ArrayList<Reclamacion>) reclamacionDAO.consultarReclamacionesPorPoliza("3543");
-		assertEquals("Debe entregar 0 reclamaciones", 0, reclamaciones.size());
+		ArrayList<Reclamacion> reclamaciones = (ArrayList<Reclamacion>) reclamacionDAO.consultarReclamacionesPorPoliza("1122334455");
+		assertEquals("Debe entregar 0 reclamaciones", 2, reclamaciones.size());
 	}
 	
 	@Test
