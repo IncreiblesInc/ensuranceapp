@@ -1,11 +1,16 @@
 package co.edu.udea.appempresariales.ensuranceappjersey.dao;
 
+import java.util.List;
+
+import co.edu.udea.appempresariales.ensuranceappjersey.dao.implementacion.CiudadDAOImpl;
 import co.edu.udea.appempresariales.ensuranceappjersey.dao.implementacion.ClienteDAOImpl;
 import co.edu.udea.appempresariales.ensuranceappjersey.dao.implementacion.PolizaDAOImpl;
 import co.edu.udea.appempresariales.ensuranceappjersey.dao.implementacion.ReclamacionDAOImpl;
+import co.edu.udea.appempresariales.ensuranceappjersey.dao.interfaces.CiudadDAO;
 import co.edu.udea.appempresariales.ensuranceappjersey.dao.interfaces.ClienteDAO;
 import co.edu.udea.appempresariales.ensuranceappjersey.dao.interfaces.PolizaDAO;
 import co.edu.udea.appempresariales.ensuranceappjersey.dao.interfaces.ReclamacionDAO;
+import co.edu.udea.appempresariales.ensuranceappjersey.entities.Ciudad;
 
 /**
  * Clase encargada de retornar los DAOs Correspondientes a cada clase.
@@ -62,6 +67,10 @@ public class DAOFactory {
 	 */
 	public ReclamacionDAO getReclamacionDAO(){
 		return new ReclamacionDAOImpl();
+	}
+	
+	public CiudadDAO getCiudadDAO(){
+		return new CiudadDAOImpl();
 	}
 
 }
