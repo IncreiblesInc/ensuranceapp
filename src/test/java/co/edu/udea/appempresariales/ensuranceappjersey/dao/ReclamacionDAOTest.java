@@ -31,13 +31,6 @@ public class ReclamacionDAOTest {
 	}
 	
 	@Test
-	public void DeberiaEntregarListaPolizaDeUnCliente() {
-		reclamacionDAO = new ReclamacionDAOImpl();
-		ArrayList<Reclamacion> reclamaciones = (ArrayList<Reclamacion>) reclamacionDAO.consultarReclamacionesPorCliente("123");
-		assertEquals("Debe entregar 3 reclamaciones", 3, reclamaciones.size());
-	}
-	
-	@Test
 	public void DeberiaEntregarCeroReclamacionesSiNoExisteCliente() {
 		reclamacionDAO = new ReclamacionDAOImpl();
 		ArrayList<Reclamacion> reclamaciones = (ArrayList<Reclamacion>) reclamacionDAO.consultarReclamacionesPorCliente("47474");
@@ -58,15 +51,15 @@ public class ReclamacionDAOTest {
 	@Test
 	public void DeberiaRetornarReclamacionesDadaUnaPoliza(){
 		reclamacionDAO = new ReclamacionDAOImpl();
-		ArrayList<Reclamacion> reclamaciones = (ArrayList<Reclamacion>) reclamacionDAO.consultarReclamacionesPorPoliza("3543");
-		assertEquals("Debe entregar 0 reclamaciones", 0, reclamaciones.size());
+		ArrayList<Reclamacion> reclamaciones = (ArrayList<Reclamacion>) reclamacionDAO.consultarReclamacionesPorPoliza("1122334455");
+		assertEquals("Debe entregar 0 reclamaciones", 2, reclamaciones.size());
 	}
 	
 	@Test
 	public void DeberiaRetornarNumeroReclamacionesDadaUnaPoliza(){
 		reclamacionDAO = new ReclamacionDAOImpl();
 		ArrayList<Reclamacion> reclamaciones = (ArrayList<Reclamacion>) reclamacionDAO.consultarReclamacionesPorPoliza("123");
-		assertEquals("Debe entregar 2 reclamaciones", 2, reclamaciones.size());
+		assertEquals("Debe entregar 2 reclamaciones", 0, reclamaciones.size());
 	}
 	
 	@Test

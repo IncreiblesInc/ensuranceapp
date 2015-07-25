@@ -14,7 +14,7 @@ public class Reclamacion implements Serializable {
 	/**
 	 * Codigo de la reclamacion
 	 */
-	private String cdReclamacion;
+	private String codigoReclamacion;
 	
 	/**
 	 * Fecha de la reclamacion
@@ -29,7 +29,7 @@ public class Reclamacion implements Serializable {
 	/**
 	 * Valor de la reclamacion
 	 */
-	private double valorReclamacion;
+	private int valorReclamacion;
 	
 	/**
 	 * Motivo de la reclamacion
@@ -50,6 +50,8 @@ public class Reclamacion implements Serializable {
 	 * Numero de póliza de la reclamacion
 	 */
 	private String numeroPoliza;
+	
+	private String fotoReclamacion;
 
 	/**
 	 * @param cdReclamacion
@@ -62,11 +64,11 @@ public class Reclamacion implements Serializable {
 	 * @param numeroPoliza
 	 */
 	public Reclamacion(String cdReclamacion, Date fechaReclamacion,
-			String ciudadReclamacion, double valorReclamacion,
+			String ciudadReclamacion, int valorReclamacion,
 			String motivoReclamacion, String estadoReclamacion,
 			Date fechaActualizacion, String numeroPoliza) {
 		super();
-		this.cdReclamacion = cdReclamacion;
+		this.codigoReclamacion = cdReclamacion;
 		this.fechaReclamacion = fechaReclamacion;
 		this.ciudadReclamacion = ciudadReclamacion;
 		this.valorReclamacion = valorReclamacion;
@@ -83,15 +85,15 @@ public class Reclamacion implements Serializable {
 	/**
 	 * @return the cdReclamacion
 	 */
-	public String getCdReclamacion() {
-		return cdReclamacion;
+	public String getCodigoReclamacion() {
+		return codigoReclamacion;
 	}
 
 	/**
 	 * @param cdReclamacion the cdReclamacion to set
 	 */
-	public void setCdReclamacion(String cdReclamacion) {
-		this.cdReclamacion = cdReclamacion;
+	public void setCodigoReclamacion(String cdReclamacion) {
+		this.codigoReclamacion = cdReclamacion;
 	}
 
 	/**
@@ -125,14 +127,14 @@ public class Reclamacion implements Serializable {
 	/**
 	 * @return the valorReclamacion
 	 */
-	public double getValorReclamacion() {
+	public int getValorReclamacion() {
 		return valorReclamacion;
 	}
 
 	/**
 	 * @param valorReclamacion the valorReclamacion to set
 	 */
-	public void setValorReclamacion(double valorReclamacion) {
+	public void setValorReclamacion(int valorReclamacion) {
 		this.valorReclamacion = valorReclamacion;
 	}
 
@@ -192,6 +194,13 @@ public class Reclamacion implements Serializable {
 		this.numeroPoliza = numeroPoliza;
 	}
 	
+	public String getFotoReclamacion() {
+		return fotoReclamacion;
+	}
+
+	public void setFotoReclamacion(String fotoReclamacion) {
+		this.fotoReclamacion = fotoReclamacion;
+	}
 	
 	
 	

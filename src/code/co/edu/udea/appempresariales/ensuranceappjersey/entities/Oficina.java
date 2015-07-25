@@ -31,7 +31,7 @@ public class Oficina implements Serializable {
 	 * Identificador único de la oficina.
 	 */
 
-	private String cdOficina;
+	private String codigoOficina;
 
 	/**
 	 * 
@@ -45,7 +45,7 @@ public class Oficina implements Serializable {
 		super();
 		this.ciudadOficina = ciudad;
 		this.nombreOficina = nombreOficina;
-		this.cdOficina = cdOficina;
+		this.codigoOficina = cdOficina;
 	}
 
 	public Oficina() {
@@ -85,16 +85,16 @@ public class Oficina implements Serializable {
 	/**
 	 * @return the cdOficina
 	 */
-	public String getCdOficina() {
-		return cdOficina;
+	public String getCodigoOficina() {
+		return codigoOficina;
 	}
 
 	/**
 	 * @param cdOficina
 	 *            the cdOficina to set
 	 */
-	public void setCdOficina(String cdOficina) {
-		this.cdOficina = cdOficina;
+	public void setCodigoOficina(String cdOficina) {
+		this.codigoOficina = cdOficina;
 	}
 
 }
