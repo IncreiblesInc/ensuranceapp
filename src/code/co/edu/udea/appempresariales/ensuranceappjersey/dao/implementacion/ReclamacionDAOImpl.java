@@ -87,7 +87,7 @@ public class ReclamacionDAOImpl implements ReclamacionDAO {
 						(String)documento.get("codigoReclamacion"),
 								Utils.formatDate(documento.get("fechaReclamacion")),
 								(String)documento.get("ciudadReclamacion"),
-								(Integer)documento.get("valorReclamacion"),
+								(Integer)(documento.get("valorReclamacion")),
 								(String)documento.get("motivoReclamacion"),
 								(String)documento.get("estadoReclamacion"),
 								Utils.formatDate(documento.get("fechaActualizacion")),

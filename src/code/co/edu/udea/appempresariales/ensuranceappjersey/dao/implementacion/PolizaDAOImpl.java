@@ -3,12 +3,15 @@
  */
 package co.edu.udea.appempresariales.ensuranceappjersey.dao.implementacion;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.List;
+
+import org.apache.log4j.helpers.ISO8601DateFormat;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
@@ -89,17 +92,17 @@ public class PolizaDAOImpl implements PolizaDAO {
 		DBCollection collectionOfPolizas = dataBase.getCollection(POLIZAS_NAME_COLLECTION);
 
 		BasicDBObject clientQuery = new BasicDBObject("cedulaCliente", cedulaCliente);
-		
-		BasicDBObject fechaQuery= new BasicDBObject("fechaInicio", new BasicDBObject("$gt", "Date()"));
+		Date now= new Date();
+		ISO8601DateFormat iso8601DateFormat = new ISO8601DateFormat();
+		String nowISO= iso8601DateFormat.format(now);
+		BasicDBObject fechaQuery= new BasicDBObject("fechaFin", new BasicDBObject("$gt",nowISO ));
 		
 		BasicDBObject andQuery = new BasicDBObject();
 		ArrayList<BasicDBObject> queries= new ArrayList<BasicDBObject>();
-
-		BasicDBObject npolizaField = new BasicDBObject("numeroPoliza", 1);
 		queries.add(clientQuery);
 		queries.add(fechaQuery);
 		andQuery.put("$and", queries);
-		DBCursor polizasMongo = collectionOfPolizas.find(andQuery, npolizaField);
+		DBCursor polizasMongo = collectionOfPolizas.find(andQuery);
 
 		List<Poliza> polizasVigentes = new ArrayList<Poliza>();
 		
