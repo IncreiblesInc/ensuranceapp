@@ -35,11 +35,6 @@ public class ReclamacionDAOImpl implements ReclamacionDAO {
 	
 	private MongoClientURI clientURI;
 	private MongoClient mongoClient;
-	
-
-	public ReclamacionDAOImpl() {
-
-	}
 
 
 
@@ -49,19 +44,13 @@ public class ReclamacionDAOImpl implements ReclamacionDAO {
 			throw new IllegalArgumentException("Debe ingresar alguna cédula");
 		}
 			PolizaDAO polizaDAO = new PolizaDAOImpl();
-			ArrayList<Poliza> polizas = (ArrayList<Poliza>) polizaDAO.consultarPolizasVigentesPorCliente(cedula);
-			ArrayList<Reclamacion> reclamaciones = (ArrayList<Reclamacion>) this.obtenerReclamacionesTemporal();
+			List<Poliza> polizas =  polizaDAO.consultarPolizasVigentesPorCliente(cedula);
+			
 			ArrayList<Reclamacion> reclamacionPorCliente = new ArrayList<Reclamacion>();
 			
-			for(int i=0;i<reclamaciones.size(); i++){
-				Reclamacion reclamacion = reclamaciones.get(i);
-				 String numPoliza = reclamaciones.get(i).getNumeroPoliza();
-				 for(int j =0; j<polizas.size(); j++){
-					 Poliza poliza = polizas.get(j);
-					 if(poliza.getNumeroPoliza().equals(numPoliza)){
-						 reclamacionPorCliente.add(reclamacion);
-					 }
-				 }
+			for(Poliza poliza:polizas){
+				List<Reclamacion> reclamacionPorPoliza=this.consultarReclamacionesPorPoliza(poliza.getNumeroPoliza());
+				reclamacionPorCliente.addAll(reclamacionPorPoliza);
 			}
 			return reclamacionPorCliente;
 
@@ -70,20 +59,7 @@ public class ReclamacionDAOImpl implements ReclamacionDAO {
 	
 	
 
-	public List<Reclamacion> obtenerReclamacionesTemporal(){
-		String[] codigos  = {"123","124","121","125","127"};
-		ArrayList<Reclamacion> reclamaciones = new ArrayList<Reclamacion>();
-		for(int i =0; i<5;i++){
-			Reclamacion r = new Reclamacion("medellin", new Date(), "Medellin", 250000, "Garantia", "En proceso", new Date(), codigos[i]);
-			reclamaciones.add(r);
-			if(i==0){
-				 r = new Reclamacion("medellin", new Date(), "Medellin", 250000, "Garantia", "En proceso", new Date(), codigos[i]);
-				reclamaciones.add(r);
-			}
-		}
-		
-		return reclamaciones;
-	}
+
 
 
 	public List<Reclamacion> consultarReclamacionesPorPoliza(String numeroPoliza) throws IllegalArgumentException {

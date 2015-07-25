@@ -22,13 +22,6 @@ public interface ReclamacionDAO {
 	public List<Reclamacion> consultarReclamacionesPorCliente(String cedula);
 	
 	/**
-	 * 
-	 * @return Lista de reclamaciones existentes en la base de datos.
-	 */
-	public List<Reclamacion> obtenerReclamacionesTemporal();
-	
-	
-	/**
 	 * Metodo que guarda una reclamacion
 	 * @param reclamacion
 	 */
