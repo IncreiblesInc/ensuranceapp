@@ -1,5 +1,8 @@
 package co.edu.udea.appempresariales.ensuranceappjersey.negocio;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.util.List;
 
 import co.edu.udea.appempresariales.ensuranceappjersey.dao.DAOFactory;
@@ -39,5 +42,25 @@ public class LogicaReclamacion {
 		}
 		
 		return reclamacionesPoliza;		
+	}
+	
+	public String guardarImagen(byte[] imagen, String nombre){
+
+        try {
+
+	        String ruta = new File("").getAbsolutePath()+"\\src\\main\\webapp\\reclamaciones\\"+nombre+".jpg";
+		    //convert array of bytes into file
+		    FileOutputStream fileOuputStream = 
+	                  new FileOutputStream(ruta); 
+		    fileOuputStream.write(imagen);
+		    fileOuputStream.close();
+		    
+		    return ruta;
+		    
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+		return "";
 	}
 }

@@ -23,11 +23,11 @@ public class ReclamacionDAOTest {
 	
 	@Before
 	public void Before(){
-		//Debería preparar valores de prueba en la base de datos
+		//Deberia preparar valores de prueba en la base de datos
 	}
 	@After
 	public void After(){
-		//Debería liberar los datos de prueba.
+		//Deberia liberar los datos de prueba.
 	}
 	
 	@Test
@@ -80,7 +80,7 @@ public class ReclamacionDAOTest {
 	public void DeberiaRetornarExcepcionSiPolizaEsNULL(){
 		reclamacionDAO = new ReclamacionDAOImpl();
 		try{
-			ArrayList<Reclamacion> reclamaciones = (ArrayList<Reclamacion>) reclamacionDAO.consultarReclamacionesPorPoliza(null);
+			reclamacionDAO.consultarReclamacionesPorPoliza(null);
 			fail();
 		}catch(IllegalArgumentException ilegal){	
 			assertEquals("Si lanza excepcion, pasa la prueba", 1,1);
